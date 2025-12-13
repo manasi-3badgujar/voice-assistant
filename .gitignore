@@ -1,0 +1,99 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# ------------------------------------------------------
+# Core Node & Package Managers
+# ------------------------------------------------------
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+.pnpm-debug.log*
+
+# ------------------------------------------------------
+# Next.js
+# ------------------------------------------------------
+.next/
+out/
+build/
+dist/
+
+# ------------------------------------------------------
+# Testing
+# ------------------------------------------------------
+coverage/
+.nyc_output/
+
+# ------------------------------------------------------
+# Production Builds
+# ------------------------------------------------------
+build/
+
+# ------------------------------------------------------
+# Environment Variables
+# ------------------------------------------------------
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ------------------------------------------------------
+# OS / Editor Files
+# ------------------------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*.iml
+
+# ------------------------------------------------------
+# Logs & Debug
+# ------------------------------------------------------
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+
+# ------------------------------------------------------
+# TypeScript
+# ------------------------------------------------------
+*.tsbuildinfo
+next-env.d.ts
+
+# ------------------------------------------------------
+# Deployment Platforms
+# ------------------------------------------------------
+.vercel
+vercel.json
+
+# ------------------------------------------------------
+# Caches
+# ------------------------------------------------------
+.cache/
+.parcel-cache/
+
+# ------------------------------------------------------
+# Local Storage & Audio Data (Project Specific)
+# ------------------------------------------------------
+localStorage.json
+localStorage_backup.json
+*.backup
+public/audio/
+exports/
+backup/
+chat_history_backup.json
+
+# ------------------------------------------------------
+# Browser Data
+# ------------------------------------------------------
+*.localstorage
+*.session
+browser_data/
