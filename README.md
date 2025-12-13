@@ -9,7 +9,7 @@ Built for the **RoomMitra Voice Concierge Assignment**, this application runs co
 
 ## 🚀 Live Demo
 Deployed on Vercel  
-(Add deployment link)
+https://voice-assistant-omega-lime.vercel.app
 
 ---
 
@@ -58,8 +58,8 @@ Deployed on Vercel
 ⏱ **Auto Silence Handling**
 - Microphone stops automatically after inactivity
 
-📱 **Fully Responsive UI**
-- Optimized for mobile and desktop
+📱 **Responsive UI**
+- Optimized for tablet and desktop
 
 ---
 
@@ -100,6 +100,7 @@ Deployed on Vercel
 - Limited speech recognition support on iOS Safari
 - Requires microphone permission from the browser
 - Internet connection required for browser STT (browser-dependent)
+- Auto-response accepting after assistant reply is **not available**
 
 ---
 

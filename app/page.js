@@ -14,13 +14,13 @@ export default function Home() {
   });
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [processingQuery, setProcessingQuery] = useState(false);
-  // ✅ NEW: Assistant wave states
+  // Assistant wave states
   const [assistantVolumes, setAssistantVolumes] = useState(new Array(20).fill(0));
 
   const QA = [
     { intent: "greeting", keywords: ["hello", "hi", "hey"], response: "Hello! How can I assist you today?" },
     { intent: "introduction", keywords: ["who are you", "who r u", "your name"], response: "I am your smart hotel voice assistant, here to help you with anything you need." },
-    { intent: "thanks", keywords: ["thank you", "thanks", "thx"], response: "You're welcome! 😊 Happy to help." },
+    { intent: "thanks", keywords: ["thank you", "thanks", "thx"], response: "You're welcome! Happy to help." },
     { intent: "food", keywords: ["food", "breakfast", "menu", "order"], response: "Our restaurant is open 24/7. You can order food from the in-room tablet or by calling extension 9." },
     { intent: "water", keywords: ["water", "bottle", "drinking water"], response: "Sure! Housekeeping will deliver two bottles of drinking water shortly." },
     { intent: "housekeeping", keywords: ["clean room", "housekeeping", "towel", "linen"], response: "Housekeeping has been notified. They will attend to your room in 10–15 minutes." },
@@ -40,13 +40,13 @@ export default function Home() {
   const dataArrayRef = useRef(null);
   const animationRef = useRef(null);
   const assistantAnimationRef = useRef(null);
-  const thinkingAnimationRef = useRef(null); // ✅ NEW: Thinking animation
+  const thinkingAnimationRef = useRef(null); 
   const silenceTimeoutRef = useRef(null);
   const [volumes, setVolumes] = useState(new Array(20).fill(0));
   const mediaStreamRef = useRef(null);
   const isProcessingRef = useRef(false);
 
-  // 🗄️ LocalStorage persistence - CHAT
+  // LocalStorage persistence - CHAT
   useEffect(() => {
     const savedChat = localStorage.getItem("chat_history");
     if (savedChat) setConversation(JSON.parse(savedChat));
@@ -56,7 +56,7 @@ export default function Home() {
     localStorage.setItem("chat_history", JSON.stringify(conversation));
   }, [conversation]);
 
-  // 🗄️ LocalStorage persistence - ANALYTICS
+  // LocalStorage persistence - ANALYTICS
   useEffect(() => {
     const savedAnalytics = localStorage.getItem("voice_assistant_analytics");
     if (savedAnalytics) {
@@ -89,7 +89,7 @@ export default function Home() {
       chatRef.current.scrollTop = chatRef.current.scrollHeight;
   }, [conversation]);
 
-  // ✅ NEW: Assistant "listening/thinking" wave animation
+  //  Assistant "listening/thinking" wave animation
   const animateThinkingWaveform = () => {
     if (!thinking) return;
     
@@ -104,7 +104,7 @@ export default function Home() {
     thinkingAnimationRef.current = requestAnimationFrame(animateThinkingWaveform);
   };
 
-  // ✅ Assistant speaking wave animation
+  // Assistant speaking wave animation
   const animateAssistantWaveform = () => {
     if (!isSpeaking) return;
     
@@ -134,7 +134,7 @@ export default function Home() {
       if (thinkingAnimationRef.current) {
         cancelAnimationFrame(thinkingAnimationRef.current);
       }
-      animateAssistantWaveform(); // Speaking waves
+      animateAssistantWaveform(); 
     };
 
     utterance.onend = () => {
@@ -197,7 +197,7 @@ export default function Home() {
 
     setConversation((p) => [...p, { role: "user", text: text.trim() }]);
     setThinking(true);
-    animateThinkingWaveform(); // ✅ Start assistant listening animation
+    animateThinkingWaveform(); // Start assistant listening animation
 
     setTimeout(() => {
       const matches = matchIntents(text);
@@ -341,16 +341,16 @@ export default function Home() {
     animationRef.current = requestAnimationFrame(animateWaveform);
   };
 
-  // ✅ Get current volumes (user or assistant)
+  //Get current volumes (user or assistant)
   const currentVolumes = isSpeaking ? assistantVolumes : volumes;
   const showWaves = (listening && !isSpeaking && !processingQuery) || isSpeaking || thinking;
 
   return (
     <div className={`${darkMode ? "bg-black text-white" : "bg-white text-black"} min-h-screen transition-all`}>
-      {/* ✅ RESPONSIVE CONTAINER */}
+      {/*RESPONSIVE CONTAINER */}
       <div className="max-w-5xl mx-auto py-4 px-3 sm:py-6 sm:px-4 md:py-8 md:px-6">
         
-        {/* ✅ RESPONSIVE HEADER */}
+        {/* RESPONSIVE HEADER */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center sm:text-left">Voice Concierge</h1>
           <div className="flex flex-wrap justify-center sm:justify-end gap-2 w-full sm:w-auto">
@@ -375,7 +375,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ✅ RESPONSIVE CHAT */}
+        {/* RESPONSIVE CHAT */}
         <div 
           ref={chatRef} 
           className={`flex flex-col gap-2 sm:gap-3 h-[320px] sm:h-[400px] md:h-[430px] overflow-y-auto p-3 sm:p-6 border-2 rounded-2xl shadow-md sm:shadow-2xl transition-all ${
@@ -398,7 +398,7 @@ export default function Home() {
               <b>{msg.role === "user" ? "👤 You" : "🤖 Assistant"}:</b> {msg.text}
             </div>
           ))}
-          {/* ✅ NEW: Assistant Listening/Thinking Animation */}
+          {/* NEW: Assistant Listening/Thinking Animation */}
           {thinking && (
             <div className="p-2.5 sm:p-4 rounded-xl bg-gradient-to-r from-indigo-400 via-purple-500 to-indigo-600 text-white animate-pulse max-w-[90%] sm:max-w-[80%] self-start shadow-lg border-2 border-indigo-300">
               <div className="flex items-center gap-3">
@@ -427,7 +427,7 @@ export default function Home() {
           )}
         </div>
 
-        {/* ✅ RESPONSIVE LISTENING STATUS */}
+        {/* RESPONSIVE LISTENING STATUS */}
         {listening && !isSpeaking && !processingQuery && (
           <div className={`mt-3 sm:mt-4 p-3 sm:p-4 rounded-xl border-2 text-sm sm:text-base shadow-lg ${
             darkMode 
@@ -438,9 +438,9 @@ export default function Home() {
           </div>
         )}
 
-        {/* ✅ RESPONSIVE MIC SECTION - TRIPLE MODE WAVES */}
+        {/*  RESPONSIVE MIC SECTION - TRIPLE MODE WAVES */}
         <div className="flex flex-col items-center gap-4 sm:gap-6 mt-6 sm:mt-10 mb-6 sm:mb-8">
-          {/* ✅ Waves for user listening, assistant thinking, OR assistant speaking */}
+          {/* Waves for user listening, assistant thinking, OR assistant speaking */}
           {showWaves && (
             <div className="flex items-end gap-0.5 sm:gap-1 h-20 sm:h-24 mb-3 sm:mb-4 w-full max-w-sm justify-center">
               {currentVolumes.map((v, i) => (
@@ -462,12 +462,12 @@ export default function Home() {
             </div>
           )}
 
-          {/* Responsive Mic Button - FIXED */}
+          {/* Responsive Mic Button  */}
           <div className="flex items-center justify-center">
             <button
               onClick={listening ? stopListening : startListening}
               disabled={isSpeaking || processingQuery}
-              className={`relative w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center transition-all duration-500 shadow-2xl group hover:scale-110 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 ${
+              className={`relative w-15 h-15 sm:w-20 sm:h-20 rounded-full flex items-center justify-center transition-all duration-500 shadow-2l group hover:scale-110 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 ${
                 isSpeaking || processingQuery
                   ? "bg-gradient-to-br from-purple-500 via-pink-600 to-purple-700 ring-8 ring-purple-400/60 shadow-purple-500/50 animate-pulse" 
                   : listening 
@@ -510,7 +510,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ✅ RESPONSIVE ANALYTICS - Bottom Right */}
+        {/* RESPONSIVE ANALYTICS - Bottom Right */}
         <div className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 w-64 sm:w-72 p-4 sm:p-6 rounded-2xl shadow-2xl backdrop-blur-xl border z-50 transition-all hover:scale-105 hover:shadow-3xl" style={{ 
           background: darkMode ? "rgba(17, 24, 39, 0.95)" : "rgba(255, 255, 255, 0.95)", 
           borderColor: darkMode ? "#374151" : "#e5e7eb",
@@ -527,7 +527,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ✅ RESPONSIVE MIC BLOCK WARNING - Bottom Left */}
+        {/* RESPONSIVE MIC BLOCK WARNING - Bottom Left */}
         {isSpeaking && (
           <div className="fixed bottom-4 left-3 sm:bottom-6 sm:left-6 w-64 sm:w-72 p-4 sm:p-5 rounded-2xl shadow-2xl backdrop-blur-xl border-4 border-orange-400/50 z-50 animate-pulse" style={{ 
             background: darkMode ? "rgba(124, 58, 237, 0.95)" : "rgba(251, 146, 60, 0.95)", 
