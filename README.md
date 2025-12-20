@@ -140,6 +140,12 @@ In addition to the required functionality, the following enhancements were imple
 
 ---
 
+## 🚀 Live Demo
+
+https://voice-assistant-mocha-ten.vercel.app/
+
+---
+
 ## ▶️ Running the Application Locally
 
 ```bash
@@ -150,6 +156,3 @@ Then open:
 
 http://localhost:5173
 
-## 🚀 Live Demo
-
-https://voice-assistant-mocha-ten.vercel.app/
