@@ -149,3 +149,7 @@ npm run dev
 Then open:
 
 http://localhost:5173
+
+## 🚀 Live Demo
+
+https://voice-assistant-mocha-ten.vercel.app/
